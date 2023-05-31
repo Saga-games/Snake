@@ -11,4 +11,3 @@ pygame.display.set_caption("Jogo da Cobrinha")
 cobrinha_pos = [(300,300)]
 
 while = True:
-  pass
