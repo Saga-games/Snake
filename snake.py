@@ -10,7 +10,7 @@ pygame.display.set_caption("Jogo da Cobrinha")
 # COBRINHA
 cobrinha_pos = [(300,300)]
 cobrinha_sup = pygame.Surface((10,10))
-cobrinha_sup.fill = ((255, 255, 255))
+#cobrinha_sup.fill = ((255, 255, 255))
 
 while True:
 
@@ -20,7 +20,7 @@ while True:
   for event in pygame.event.get():
 
     # SE CLICAR EM FECHAR, FECHAR
-    if event.type == QUIT:
+    if event.type == 'QUIT':
       pygame.quit()
       quit()
       
