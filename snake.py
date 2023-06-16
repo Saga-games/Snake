@@ -39,6 +39,7 @@ maca_sup.fill((255, 0, 0))
 
 while True:
 
+    # LIMITAR A VELOCIDADE DA COBRINHA
     pygame.time.Clock().tick(15)
 
     # LIMPAR O DISPLAY
