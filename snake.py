@@ -86,13 +86,13 @@ while True:
     # AUMENTO DA COBRINHA
     tamanho_cobrinha = len(cobrinha_pos)-1
 
-    # FAZER O CORPO ACOMPANHAR A COBRINHA
-    for i in range(tamanho_cobrinha, 0, -1):
-        cobrinha_pos[i] = cobrinha_pos[i-1]
-
     if colisao(cobrinha_pos[0], maca_pos):
         cobrinha_pos.append(cobrinha_pos[tamanho_cobrinha])
         maca_pos = gerar_posicao_aleatoria()
+
+    # FAZER O CORPO ACOMPANHAR A COBRINHA
+    for i in range(tamanho_cobrinha, 0, -1):
+        cobrinha_pos[i] = cobrinha_pos[i-1]
 
     if cobrinha_dir == DIREITA:
         cobrinha_pos[0] = cobrinha_pos[0][0] + passo, cobrinha_pos[0][1]
