@@ -23,8 +23,6 @@ cobrinha_sup.fill((255, 255, 255))
 cobrinha_dir = ESQUERDA
 
 # MACA
-
-
 def gerar_posicao_aleatoria():
     x = random.randint(0, tamanho_tela[0])
     y = random.randint(0, tamanho_tela[1])
@@ -36,6 +34,20 @@ def gerar_posicao_aleatoria():
 maca_pos = gerar_posicao_aleatoria()
 maca_sup = pygame.Surface((10, 10))
 maca_sup.fill((255, 0, 0))
+
+# FUNÇAO DE COLISÃO
+
+
+def colisao(posicao1, posicao2):
+    return posicao1 == posicao2
+
+
+def colisao_parede(posicao_cobrinha):
+    if 0 <= posicao_cobrinha[0] < tamanho_tela[0] and 0 <= posicao_cobrinha[1] < tamanho_tela[1]:
+        return False
+    else:
+        return True
+
 
 while True:
 
@@ -58,12 +70,28 @@ while True:
         if event.key in [ESQUERDA, DIREITA, CIMA, BAIXO]:
             cobrinha_dir = event.key
 
+    # VERIFIANDO COLISÃO COM A PAREDE
+    if colisao_parede(cobrinha_pos[0]):
+        pygame.quit()
+        quit()
+
     # DESENHANDO A COBRINHA
     for posicao in cobrinha_pos:
         tela.blit(cobrinha_sup, posicao)
 
     # DESENHANDO A MACA
     tela.blit(maca_sup, maca_pos)
+
+    # AUMENTO DA COBRINHA
+    tamanho_cobrinha = len(cobrinha_pos)-1
+
+    # FAZER O CORPO ACOMPANHAR A COBRINHA
+    for i in range(tamanho_cobrinha, 0, -1):
+        cobrinha_pos[i] = cobrinha_pos[i-1]
+
+    if colisao(cobrinha_pos[0], maca_pos):
+        cobrinha_pos.append(cobrinha_pos[tamanho_cobrinha])
+        maca_pos = gerar_posicao_aleatoria()
 
     if cobrinha_dir == DIREITA:
         cobrinha_pos[0] = cobrinha_pos[0][0] + passo, cobrinha_pos[0][1]
