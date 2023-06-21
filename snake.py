@@ -30,17 +30,13 @@ def gerar_posicao_aleatoria():
     y = y // passo * passo
     return x, y
 
-
 maca_pos = gerar_posicao_aleatoria()
 maca_sup = pygame.Surface((10, 10))
 maca_sup.fill((255, 0, 0))
 
 # FUNÇAO DE COLISÃO
-
-
 def colisao(posicao1, posicao2):
     return posicao1 == posicao2
-
 
 def colisao_parede(posicao_cobrinha):
     if 0 <= posicao_cobrinha[0] < tamanho_tela[0] and 0 <= posicao_cobrinha[1] < tamanho_tela[1]:
@@ -72,6 +68,11 @@ while True:
 
     # VERIFIANDO COLISÃO COM A PAREDE
     if colisao_parede(cobrinha_pos[0]):
+        pygame.quit()
+        quit()
+
+    # VERIFICAR COLISÃO COM O CORPO DA COBRINHA
+    if cobrinha_pos[0] in cobrinha_pos[1:]:
         pygame.quit()
         quit()
 
