@@ -83,7 +83,7 @@ while True:
     # DESENHANDO A MACA
     tela.blit(maca_sup, maca_pos)
 
-    # AUMENTO DA COBRINHA
+    # AUMENTO DA COBRINHA AO COMER MACA
     tamanho_cobrinha = len(cobrinha_pos)-1
 
     if colisao(cobrinha_pos[0], maca_pos):
